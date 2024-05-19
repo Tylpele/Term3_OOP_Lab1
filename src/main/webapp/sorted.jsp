@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,16 +21,25 @@
                     <h6 class="card-subtitle mb-2 text-muted">Here is your sorted array:</h6>
                     <ul class="list-group" id="sortedArray">
                         <!-- Место для отображения отсортированного массива -->
-                        <%
-                            int[] sortedArray = (int[])request.getAttribute("sortedArray");
-                            if (sortedArray != null) {
-                                for (int item : sortedArray) {
-                        %>
-                        <li class="list-group-item"><%= item %></li>
-                        <%      }
+                            <%
+                        int[] sortedArray = (int[])request.getAttribute("sortedArray");
+                        if (sortedArray != null) {
+                            for (int i = 0; i < sortedArray.length; i++) {
+                    %>
+                            <%= sortedArray[i] %>
+                            <% if (i != sortedArray.length - 1) { %>
+                        ,
+                            <% } %>
+                            <%
+                            }
                         }
-                        %>
-                    </ul>
+                    %>
+                </div>
+                <div class="card-footer">
+                    <!-- Форма с кнопкой для перенаправления на index.jsp через сервлет -->
+                    <form action="indexRedirect" method="get">
+                        <button type="submit" class="btn btn-primary">Back to Index</button>
+                    </form>
                 </div>
             </div>
         </div>

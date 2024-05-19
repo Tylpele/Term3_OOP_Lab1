@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!--    Путь в Java относительно папки webapp-->
-<!--    в current выбрать tomcat-->
-<!--    xml Нужен для зависимостей-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Input Array</title>
@@ -20,6 +17,12 @@
                     <h5 class="card-title">Input Array</h5>
                 </div>
                 <div class="card-body">
+                    <!-- Вывод сообщения об ошибке, если есть -->
+                    <% if (request.getAttribute("errorMessage") != null) { %>
+                    <div class="alert alert-danger" role="alert">
+                        <%= request.getAttribute("errorMessage") %>
+                    </div>
+                    <% } %>
                     <form action="sort" method="post">
                         <div class="form-group">
                             <label for="arrayInput">Enter the array elements (comma-separated):</label>
@@ -38,17 +41,5 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<script>
-    document.getElementById('inputForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        let inputArray = document.getElementById('arrayInput').value.trim();
-        let array = inputArray.split(',').map(item => parseInt(item.trim()));
-
-        // Do something with the array
-        console.log(array);
-    });
-</script>
-
 </body>
 </html>
-
